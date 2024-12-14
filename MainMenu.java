@@ -541,10 +541,15 @@ public class MainMenu {
         }
     }
     private static void secretMenu(Scanner scanner) {
-        System.out.print("Masukan kode unik (di antara 1 sampai 10): ");
-        int code = scanner.nextInt();
+        System.out.print("Masukan kode unik: ");
+        scanner.nextLine();
+        String inputCode = scanner.nextLine();
     
-        if (code >= 1 && code <= 10) {
+        if (inputCode.length() < 7 || inputCode.length() > 10) {
+            System.out.println("Kode unik salah! Panjang kode harus antara 7 hingga 10 karakter. Akses ditolak.");
+            return;
+        }
+
             System.out.println("Selamat Datang VIP!!");
             
             int secretChoice;
@@ -580,10 +585,7 @@ public class MainMenu {
                     System.out.println("Keluar dari menu rahasia.");
                 }
             } while (secretChoice != 4);
-        } else {
-            System.out.println("Kode unik salah.");
         }
-    }
     
     private static String reverseWords(String text) {
         String[] words = text.split(" ");
